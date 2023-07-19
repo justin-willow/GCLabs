@@ -33,13 +33,19 @@ while (shouldContinue)
             Console.WriteLine($"{userName}, you entered {userNumber}, which is an odd number greater than 60.");
         }
     }
+    Console.WriteLine("Would you like to continue? Press Y to continue or any other key to stop.");
+    ConsoleKeyInfo keyInfo = Console.ReadKey();
+    shouldContinue = string.Equals(keyInfo.KeyChar.ToString(), "y", StringComparison.OrdinalIgnoreCase);
+    Console.ReadLine();
+
     else
     {
         Console.WriteLine("Whoops! That's an invalid input. Please enter a valid integer between 1 and 100.");
     }
 
-    Console.WriteLine($"{userName}, would you like to continue? (Y/N)");
-    ConsoleKeyInfo keyInfo = Console.ReadKey();
-    shouldContinue = string.Equals(keyInfo.KeyChar.ToString(), "y", StringComparison.OrdinalIgnoreCase);
-    Console.ReadLine();
+    
+    if (!shouldContinue)
+    {
+        Console.WriteLine("Goodbye!");
+    }
 }
