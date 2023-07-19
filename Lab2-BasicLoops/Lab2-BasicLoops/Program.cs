@@ -7,56 +7,52 @@ do
     Console.WriteLine("Hello, World!");
 
     Console.Write("Would you like to continue? (Y/N): ");
-    string userInput = Console.ReadLine();
-    if (string.Equals(userInput, "y", StringComparison.OrdinalIgnoreCase))
-    {
-        shouldContinue = true;
-    }
-    else if (string.Equals(userInput, "n", StringComparison.OrdinalIgnoreCase))
-    {
-        shouldContinue = false;
-    }
-    else
-    {
-        Console.WriteLine("Invalid input. Please Answer with either 'Y' or 'N'.");
+    string userInput;
 
-        while (true)
+    do
+    {
+        userInput = Console.ReadLine();
+
+        if (string.Equals(userInput, "y", StringComparison.OrdinalIgnoreCase))
         {
-            Console.Write("Would you like to continue? (Y/N): ");
-            userInput = Console.ReadLine();
-            if (string.Equals(userInput, "y", StringComparison.OrdinalIgnoreCase))
-            {
-                shouldContinue = true;
-                break;
-            }
-            else if (string.Equals(userInput, "n", StringComparison.OrdinalIgnoreCase))
-            {
-                shouldContinue = false;
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please answer with either 'Y' or 'N'.");
-            }
+            shouldContinue = true;
+            break;
         }
-    }
+        else if (string.Equals(userInput, "n", StringComparison.OrdinalIgnoreCase))
+        {
+            shouldContinue = false;
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please answer with either 'Y' or 'N'.");
+        }
+
+    } while (true);
+
     if (!shouldContinue)
     {
         Console.WriteLine("Goodbye!");
     }
-} while (shouldContinue);
 
+} while (shouldContinue);
 
 
 bool isRunning = true;
 
-while (isRunning)
+do
 {
     Console.Write("Enter a number: ");
     string userAnswer = Console.ReadLine();
 
     if (int.TryParse(userAnswer, out int userNumber))
     {
+        if (userNumber < 0)
+        {
+            Console.WriteLine("Invalid input. Please enter a non-negative integer number.");
+            continue;
+        }
+
         StringBuilder countDown = new();
 
         for (int i = userNumber; i >= 0; i--)
@@ -92,45 +88,35 @@ while (isRunning)
     }
 
     Console.Write("Would you like to continue? (Y/N): ");
-    string userInput = Console.ReadLine();
-    if (string.Equals(userInput, "y", StringComparison.OrdinalIgnoreCase))
-    {
-        isRunning = true;
-    }
-    else if (string.Equals(userInput, "n", StringComparison.OrdinalIgnoreCase))
-    {
-        isRunning = false;
-    }
-    else
-    {
-        Console.WriteLine("Invalid input. Please Answer with either Y or N.");
+    string userInput;
 
-        while (true)
+    do
+    {
+        userInput = Console.ReadLine();
+
+        if (string.Equals(userInput, "y", StringComparison.OrdinalIgnoreCase))
         {
-            Console.Write("Would you like to continue? (Y/N): ");
-            userInput = Console.ReadLine();
-            if (string.Equals(userInput, "y", StringComparison.OrdinalIgnoreCase))
-            {
-                isRunning = true;
-                break;
-            }
-            else if (string.Equals(userInput, "n", StringComparison.OrdinalIgnoreCase))
-            {
-                isRunning = false;
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please answer with either 'Y' or 'N'.");
-            }
+            isRunning = true;
+            break;
         }
-    }
+        else if (string.Equals(userInput, "n", StringComparison.OrdinalIgnoreCase))
+        {
+            isRunning = false;
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please answer with either 'Y' or 'N'.");
+        }
+
+    } while (true);
+
     if (!isRunning)
     {
         Console.WriteLine("Goodbye!");
     }
-}
 
+} while (isRunning);
 
 
 Console.Write("Enter the key code: ");
@@ -145,7 +131,6 @@ while (!isDoorUnlocked)
 }
 
 Console.WriteLine("Welcome!");
-
 
 
 Console.WriteLine("You will now be limited to 5 attempts.");
@@ -174,7 +159,6 @@ else
 }
 
 
-
 Console.WriteLine("And again!");
 isDoorUnlocked = false;
 
@@ -198,8 +182,6 @@ static bool CheckKeyCode()
         Console.Write("Enter the key code: ");
         string keyCode = Console.ReadLine();
 
-
-
         if (string.Equals(keyCode, "13579"))
         {
             return true;
@@ -207,8 +189,8 @@ static bool CheckKeyCode()
 
         attemptsCount--;
         Console.WriteLine($"{keyCode} is incorrect, {attemptsCount} {(attemptsCount == 1 ? "attempt" : "attempts")} remaining.");
-    }
-    while (attemptsCount > 0);
+
+    } while (attemptsCount > 0);
 
     return false;
 }
