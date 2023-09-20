@@ -52,9 +52,7 @@ FROM Orders
 WHERE OrderID = 10290;
 
 --12. Join the orders table to the customers table.
-SELECT 
-	o.*,
-	c.*
+SELECT *
 FROM Orders o
 JOIN Customers c ON o.CustomerID = c.CustomerID;
 
