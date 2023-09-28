@@ -1,0 +1,161 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Dark mode */
+:root {
+    --background-color: hsl(0, 0%, 5%);
+    --text-color: hsl(0, 0%, 95%);
+    --padding: max(2em, 4vw);
+}
+
+/* Basic body styles */
+html, body {
+    background-color: var(--background-color);
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: var(--padding);
+    background-color: var(--background-color);
+    opacity: 0.9;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: var(--padding);
+    background-color: var(--background-color);
+    opacity: 0.9;
+}
+
+#page-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    white-space: normal;
+    overflow-y: scroll;
+    padding: 0 var(--padding);
+    box-sizing: border-box;
+}
+
+/* Position header within the frame */
+#siteheader {
+    position: fixed;
+    z-index: 10;
+    left: var(--padding);
+    top: var(--padding);
+}
+
+/* Specify position of background within frame */
+#content {
+    width: 100%;
+    min-height: calc(100vh - 2 * var(--padding) - 3rem);
+    position: relative;
+    top: calc(var(--padding) + 3rem);
+    z-index: 8;
+    overflow-wrap: break-word;
+    padding: 2vw;
+}
+
+/* Hide scrollbar but keep functionality */
+#content::-webkit-scrollbar,
+#page-container::-webkit-scrollbar {
+    width: 1em;
+    background-color: transparent;
+}
+
+#content::-webkit-scrollbar-thumb,
+#page-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+#background {
+    position: fixed;
+    top: var(--padding);
+    left: var(--padding);
+    width: calc(100% - 2 * var(--padding));
+    height: calc(100% - 2 * var(--padding));
+    z-index: 1;
+    overflow-wrap: break-word;
+}
+
+/* Frame styles */
+.frame {
+    position: fixed;
+    z-index: 5;
+    left: var(--padding);
+    right: var(--padding);
+    top: var(--padding);
+    bottom: var(--padding);
+    mix-blend-mode: difference;
+}
+
+.frame-line {
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.5;
+}
+
+.frame-line-left,
+.frame-line-right {
+    top: 0;
+    height: 100%;
+}
+
+.frame-line-left {
+    left: 0;
+    width: 1px;
+}
+
+.frame-line-right {
+    right: 0;
+    width: 1px;
+}
+
+.frame-line-top,
+.frame-line-bottom {
+    left: 0;
+    width: 100%;
+}
+
+.frame-line-top {
+    top: 0;
+    height: 1px;
+}
+
+.frame-line-bottom {
+    bottom: 0;
+    height: 1px;
+}
+
+.custom-footer {
+    position: fixed;
+    z-index: 10;
+    left: calc(var(--padding) + 1em);
+    bottom: var(--padding);
+    transform-origin: left bottom;
+    transform: rotate(-90deg);
+    white-space: nowrap;
+}
+
+.btn-link {
+    color: var(--text-color);
+}
