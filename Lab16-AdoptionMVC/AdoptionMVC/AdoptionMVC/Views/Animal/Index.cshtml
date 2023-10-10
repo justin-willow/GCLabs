@@ -1,0 +1,19 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Available Breeds";
+}
+<div class="container">
+    <h1 class="my-4">Select a Breed</h1>
+    <form method="get" asp-action="Results">
+        <div class="form-group">
+            <select name="selectedBreed" class="form-control" required>
+                <option value="">Select a Breed</option>
+                @foreach (var breed in Model)
+                {
+                    <option value="@breed">@breed</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
