@@ -1,0 +1,20 @@
+﻿@model List<ChildrenData>
+
+<div class="container">
+    <h1 class="text-center mt-4">Reddit Posts from r/aww</h1>
+
+    <div class="row">
+        @foreach (ChildrenData post in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@post.thumbnail" class="card-img-top" alt="@post.title">
+                    <div class="card-body">
+                        <h5 class="card-title">@post.title</h5>
+                        <a href="@post.url" class="btn btn-primary" target="_blank">Read more</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
