@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Movie App</h1>
+    <p class="lead">Explore and discover movies!</p>
+
+    <a class="btn btn-primary btn-lg" href="@Url.Action("MovieSearch", "Home")">Movie Search</a>
+
+    <a class="btn btn-danger btn-lg" href="@Url.Action("MovieNight", "Home")">Movie Night</a>
+</div>

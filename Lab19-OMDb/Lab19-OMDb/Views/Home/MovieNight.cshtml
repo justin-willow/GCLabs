@@ -1,0 +1,42 @@
+﻿@model List<MovieResponse>
+
+<div class="container">
+    <h1>Movie Night</h1>
+
+    <form asp-controller="Home" asp-action="MovieNightResults" method="post">
+        <div class="form-group">
+            <label for="Title1" class="sr-only">Movie Title 1</label>
+            <input type="text" class="form-control" id="Title1" name="Title1" placeholder="Enter movie title 1" required>
+        </div>
+        <div class="form-group">
+            <label for="Title2" class="sr-only">Movie Title 2</label>
+            <input type text" class="form-control" id="Title2" name="Title2" placeholder="Enter movie title 2" required>
+        </div>
+        <div class="form-group">
+            <label for="Title3" class="sr-only">Movie Title 3</label>
+            <input type="text" class="form-control" id="Title3" name="Title3" placeholder="Enter movie title 3" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    @if (Model != null && Model.Count == 3)
+    {
+        <div class="row mt-4">
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                var movie = Model[i];
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="@movie.Poster" class="card-img-top" alt="Movie Poster">
+                        <div class="card-body">
+                            <h5 class="card-title">@movie.Title</h5>
+                            <p class="card-text">Year: @movie.Year</p>
+                            <p class="card-text">Plot: @movie.Plot</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

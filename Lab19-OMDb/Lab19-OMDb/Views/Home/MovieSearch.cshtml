@@ -1,0 +1,23 @@
+﻿@model MovieResponse
+
+<div class="container">
+    <h1>Movie Search</h1>
+
+    <form asp-controller="Home" asp-action="MovieSearchResults" method="post">
+        <div class="form-group">
+            <label for="Title" class="sr-only">Movie Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="Enter a movie title" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <div class="mt-4">
+            <h2>@Model.Title</h2>
+            <p>Year: @Model.Year</p>
+            <p>Plot: @Model.Plot</p>
+            <img src="@Model.Poster" alt="Movie Poster">
+        </div>
+    }
+</div>
